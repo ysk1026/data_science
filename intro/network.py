@@ -1,3 +1,5 @@
+from collections import Counter
+
 users = [
     { "id": 0, "name": "Hero"},
     { "id": 1, "name": "Dunn"},
@@ -43,3 +45,22 @@ num_friends_by_id.sort(                     # 정렬해 보자.
 print("연결 차수가 반영된 데이텀 네트워크")
 print(num_friends_by_id)
 
+def foaf_ids_bad(user):
+    # "foaf"는 친구의 친구 ("friend of a friend")를 의미하는 약자다.
+    return [foaf_id
+            for friend_id in friendships[user["id"]]
+            for foaf_id in friendships[friend_id]]
+
+print(foaf_ids_bad(users[0]))
+
+def friends_of_friends(user):
+    user_id = user["id"]
+    return Counter(
+        foaf_id
+        for friend_id in friendships[user_id] # 사용자의 친구 개개인에 대해
+        for foaf_id in friendships[friend_id] # 그들의 친구들을 세어 보고
+        if foaf_id != user_id                 # 사용자 자신과
+        and foaf_id not in friendships[user_id] # 사용자의 친구는 제외
+    )
+    
+print(friends_of_friends(users[3]))
