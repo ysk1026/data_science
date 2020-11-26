@@ -31,3 +31,4 @@ plt.ylabel("test 2 grade")
 # 여기서 plt.axis("equal")을 추가하면 공정한 비교가 됨
 plt.axis("equal")
 plt.show()
+
