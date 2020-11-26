@@ -63,4 +63,4 @@ def friends_of_friends(user):
         and foaf_id not in friendships[user_id] # 사용자의 친구는 제외
     )
     
-print(friends_of_friends(users[3]))
+print(friends_of_friends(users[3])) # id 3은 0과 함께 아는 친구가 2명, 5와 함께 아는 친구가 1명

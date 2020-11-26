@@ -65,3 +65,4 @@ plt.xticks(years)
 plt.axis([2016.5, 2018.5, 0, 550])
 plt.title("Not So Huge Anymore")
 plt.show()
+
